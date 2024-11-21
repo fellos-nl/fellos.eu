@@ -153,6 +153,14 @@ h1 {
     grid-template-columns: 1fr 1fr;
     column-gap: 2rem;
     row-gap: 0rem;
+    align-items: center;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    row-gap: 0rem;
     align-items: start;
 }
 
@@ -161,7 +169,7 @@ h1 {
 }
 
 .heading-primary {
-    font-size: 3.5rem;
+    font-size: 2.75rem;
     font-weight: 700;
     color: #0d1e28;
     margin-bottom: 0.5rem;
@@ -170,7 +178,7 @@ h1 {
 }
 
 .heading-secondary {
-    font-size: 3.5rem;
+    font-size: 2.75rem;
     font-weight: 500;
     color: #0d1e28;
     opacity: 0.6;
@@ -262,8 +270,18 @@ img {
     height: auto;
 }
 
+.hero img {
+    border-radius: 5px;
+}
+
 @media (max-width: 768px) {
     .content-grid {
+        grid-template-columns: 1fr;
+        column-gap: 2rem;
+        row-gap: 0rem;
+    }
+
+    .results-grid {
         grid-template-columns: 1fr;
         column-gap: 2rem;
         row-gap: 0rem;
