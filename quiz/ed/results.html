@@ -13,6 +13,42 @@
       data-blockingmode="auto"
       type="text/javascript"
     ></script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1752688595497707");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1752688595497707&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
   </head>
   <body>
     <header class="header">
@@ -90,16 +126,46 @@
 
           <div class="cta-group">
             <a
-              href="https://www.fellos.nl/hoe-het-werkt"
+              href="https://www.fellos.nl/hoe-het-werkt?utm_source=fellos-eu&utm_medium=social&utm_campaign=quiz_ed"
               class="cta-button primary"
+              data-button-type="how_it_works"
               >Hoe het werkt</a
             >
             <a
-              href="https://www.fellos.nl/auth/signup?q=erectiestoornis&qid=1"
+              href="https://www.fellos.nl/auth/signup?q=erectiestoornis&qid=1&utm_source=fellos-eu&utm_medium=social&utm_campaign=quiz_ed"
               class="cta-button secondary"
+              data-button-type="start_now"
               >Start direct</a
             >
           </div>
+          <script>
+            document.querySelectorAll(".cta-button").forEach((button) => {
+              button.addEventListener("click", function (e) {
+                // Prevent immediate redirect
+                e.preventDefault();
+
+                // Get the href value
+                const destination = this.href;
+
+                // Send tracking event to Meta
+                fbq(
+                  "trackCustom",
+                  "QuizCompleteRedirect",
+                  {
+                    from_domain: window.location.hostname,
+                    to_domain: "fellos.nl",
+                    button_type: this.dataset.buttonType,
+                  },
+                  function () {
+                    // Redirect after tracking is complete (small delay to ensure tracking)
+                    setTimeout(function () {
+                      window.location.href = destination;
+                    }, 300);
+                  }
+                );
+              });
+            });
+          </script>
 
           <p class="disclaimer">
             Fellos biedt online chat consulten met Nederlandse (huis)artsen.
