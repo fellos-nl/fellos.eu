@@ -147,21 +147,16 @@
                 const destination = this.href;
 
                 // Send tracking event to Meta
-                fbq(
-                  "trackCustom",
-                  "QuizCompleteRedirect",
-                  {
-                    from_domain: window.location.hostname,
-                    to_domain: "fellos.nl",
-                    button_type: this.dataset.buttonType,
-                  },
-                  function () {
-                    // Redirect after tracking is complete (small delay to ensure tracking)
-                    setTimeout(function () {
-                      window.location.href = destination;
-                    }, 300);
-                  }
-                );
+                fbq("trackCustom", "QuizCompleteRedirect", {
+                  from_domain: window.location.hostname,
+                  to_domain: "fellos.nl",
+                  button_type: this.dataset.buttonType,
+                });
+
+                // Small delay then redirect
+                setTimeout(function () {
+                  window.location.href = destination;
+                }, 300);
               });
             });
           </script>
