@@ -176,6 +176,16 @@
                   ],
                 });
 
+                // Send button click event to Tiktok
+                ttq.track("ClickButton", {
+                  contents: [
+                    {
+                      content_name: this.dataset.buttonType,
+                      description: `From ${window.location.hostname} to fellos.nl`,
+                    },
+                  ],
+                });
+
                 // Small delay then redirect
                 setTimeout(function () {
                   window.location.href = destination;
